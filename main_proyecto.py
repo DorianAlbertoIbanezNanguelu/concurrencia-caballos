@@ -82,7 +82,7 @@ class mywindow(QtWidgets.QMainWindow):
             "Apostar 10%": apostar_10,
             "Apostar 25%": apostar_25,
             "Apostar 50%": apostar_50,
-            "Apostar 100%": apostar_100,
+            "Apostar Todo": apostar_100,
         }
 
         bandera_apuesta = switch_apuesta.get(apuesta_porcentaje, "Error")()
@@ -120,7 +120,7 @@ class mywindow(QtWidgets.QMainWindow):
         tiempo3 =t3.resultado
         tiempo4 =t4.resultado
 
-        print(tiempo1, tiempo2, tiempo3, tiempo4)
+        print("\nTiempos: ",tiempo1, tiempo2, tiempo3, tiempo4,"\n")
 
 
         # Se verifica que Caballo fue el ganador y se modificara el dinero si el usuario lo ha puesto
@@ -130,32 +130,47 @@ class mywindow(QtWidgets.QMainWindow):
             if bandera_apuesta != 0:
 
                 if caballo_seleccion == "Caballo 1":
-                    
-                    
+
                     resultado_final = dinero_total + aumento
                     self.ui.text_dinero.setText(str(resultado_final))
                     QMessageBox.about(self, "Has ganado!", "Caballo 1 ha sido el ganador!, se ha puesto el dinero a tu cuenta")
+                    self.ui.pushButton_reiniciar.setEnabled(True)
                 else:
-                    resultado_final = dinero_total - aumento
-                    self.ui.text_dinero.setText(str(resultado_final))
-                    QMessageBox.about(self, "Has perdido!", "Caballo 1 no ha sido el ganador!, se ha restado el dinero a tu cuenta")
+                    if bandera_apuesta == 100:
+                        self.ui.text_dinero.setText("0.0")
+                        QMessageBox.about(self, "Has perdido!", "Caballo 1 ha sido el ganador y has perdido todo tu dinero!, vuelve a abrir el programa para comenzar de nuevo.")
+
+                    else:    
+                        resultado_final = dinero_total - aumento
+                        self.ui.text_dinero.setText(str(resultado_final))
+                        QMessageBox.about(self, "Has perdido!", "Caballo 1 ha sido el ganador!, se ha restado el dinero a tu cuenta")
+                        self.ui.pushButton_reiniciar.setEnabled(True)
             else:
-                QMessageBox.about(self, "Un caballo ha ganado!", "Caballo 1 ha sido el ganador!, no se ha modificado el dinero.")      
+                QMessageBox.about(self, "Un caballo ha ganado!", "Ha finalizado la carrera, no se ha modificado tu dinero")      
+                self.ui.pushButton_reiniciar.setEnabled(True)
         
         elif tiempo2<tiempo1 and tiempo2<tiempo3 and tiempo2<tiempo4:
             if bandera_apuesta != 0:
 
                 if caballo_seleccion == "Caballo 2":
-
+  
                     resultado_final = dinero_total + aumento
                     self.ui.text_dinero.setText(str(resultado_final))
                     QMessageBox.about(self, "Has ganado!", "Caballo 2 ha sido el ganador!, se ha puesto el dinero a tu cuenta")
+                    self.ui.pushButton_reiniciar.setEnabled(True)
                 else:
-                    resultado_final = dinero_total - aumento
-                    self.ui.text_dinero.setText(str(resultado_final))
-                    QMessageBox.about(self, "Has perdido!", "Caballo 2 no ha sido el ganador!, se ha restado el dinero a tu cuenta")
+                    if bandera_apuesta == 100:
+                        self.ui.text_dinero.setText("0.0")
+                        QMessageBox.about(self, "Has perdido!", "Caballo 2 ha sido el ganador y has perdido todo tu dinero!, vuelve a abrir el programa para comenzar de nuevo.")
+
+                    else:    
+                        resultado_final = dinero_total - aumento
+                        self.ui.text_dinero.setText(str(resultado_final))
+                        QMessageBox.about(self, "Has perdido!", "Caballo 2 ha sido el ganador!, se ha restado el dinero a tu cuenta")
+                        self.ui.pushButton_reiniciar.setEnabled(True)
             else:
-                QMessageBox.about(self, "Un caballo ha ganado!", "Caballo 2 ha sido el ganador!, no se ha modificado el dinero.")
+                QMessageBox.about(self, "Un caballo ha ganado!", "Ha finalizado la carrera, no se ha modificado tu dinero")      
+                self.ui.pushButton_reiniciar.setEnabled(True)
         
         elif tiempo3<tiempo1 and tiempo3<tiempo2 and tiempo3<tiempo4:
             if bandera_apuesta != 0:
@@ -165,12 +180,20 @@ class mywindow(QtWidgets.QMainWindow):
                     resultado_final = dinero_total + aumento
                     self.ui.text_dinero.setText(str(resultado_final))
                     QMessageBox.about(self, "Has ganado!", "Caballo 3 ha sido el ganador!, se ha puesto el dinero a tu cuenta")
+                    self.ui.pushButton_reiniciar.setEnabled(True)
                 else:
-                    resultado_final = dinero_total - aumento
-                    self.ui.text_dinero.setText(str(resultado_final))
-                    QMessageBox.about(self, "Has perdido!", "Caballo 3 no ha sido el ganador!, se ha restado el dinero a tu cuenta")
+                    if bandera_apuesta == 100:
+                        self.ui.text_dinero.setText("0.0")
+                        QMessageBox.about(self, "Has perdido!", "Caballo 3 ha sido el ganador y has perdido todo tu dinero!, vuelve a abrir el programa para comenzar de nuevo.")
+
+                    else:    
+                        resultado_final = dinero_total - aumento
+                        self.ui.text_dinero.setText(str(resultado_final))
+                        QMessageBox.about(self, "Has perdido!", "Caballo 3 ha sido el ganador!, se ha restado el dinero a tu cuenta")
+                        self.ui.pushButton_reiniciar.setEnabled(True)
             else:
-                QMessageBox.about(self, "Un caballo ha ganado!", "Caballo 3 ha sido el ganador!, no se ha modificado el dinero.")
+                QMessageBox.about(self, "Un caballo ha ganado!", "Ha finalizado la carrera, no se ha modificado tu dinero")      
+                self.ui.pushButton_reiniciar.setEnabled(True)
         
         elif tiempo4<tiempo1 and tiempo4<tiempo2 and tiempo4<tiempo3:
             if bandera_apuesta != 0:
@@ -180,16 +203,23 @@ class mywindow(QtWidgets.QMainWindow):
                     resultado_final = dinero_total + aumento
                     self.ui.text_dinero.setText(str(resultado_final))
                     QMessageBox.about(self, "Has ganado!", "Caballo 4 ha sido el ganador!, se ha puesto el dinero a tu cuenta")
+                    self.ui.pushButton_reiniciar.setEnabled(True)
                 else:
-                    resultado_final = dinero_total - aumento
-                    self.ui.text_dinero.setText(str(resultado_final))
-                    QMessageBox.about(self, "Has perdido!", "Caballo 4 no ha sido el ganador!, se ha restado el dinero a tu cuenta")
+                    if bandera_apuesta == 100:
+                        self.ui.text_dinero.setText("0.0")
+                        QMessageBox.about(self, "Has perdido!", "Caballo 4 ha sido el ganador y has perdido todo tu dinero!, vuelve a abrir el programa para comenzar de nuevo.")
+
+                    else:    
+                        resultado_final = dinero_total - aumento
+                        self.ui.text_dinero.setText(str(resultado_final))
+                        QMessageBox.about(self, "Has perdido!", "Caballo 4 ha sido el ganador!, se ha restado el dinero a tu cuenta")
+                        self.ui.pushButton_reiniciar.setEnabled(True)
             else:
-                QMessageBox.about(self, "Un caballo ha ganado!", "Caballo 4 ha sido el ganador!, no se ha modificado el dinero.")
+                QMessageBox.about(self, "Un caballo ha ganado!", "Ha finalizado la carrera, no se ha modificado tu dinero")      
+                self.ui.pushButton_reiniciar.setEnabled(True)
 
-        print(dinero_total)
 
-        self.ui.pushButton_reiniciar.setEnabled(True)
+
 
 #Reiniciar posición de los caballos
 

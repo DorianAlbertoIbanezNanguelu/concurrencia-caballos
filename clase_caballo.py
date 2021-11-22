@@ -65,7 +65,7 @@ class caballo(threading.Thread):
           if self.valor >= 600:
             self.tiempo_final = time.time()
             self.resultado = self.tiempo_final-self.tiempo_inicio  
-            print("Caballo Ganador!!: " + str(self.num)+", Tiempo: "+str(self.resultado))
+            print("\nEl caballo: " + str(self.num)+" cruzó la meta!!, Tiempo: "+str(self.resultado))
             bandera=True
             break
 
